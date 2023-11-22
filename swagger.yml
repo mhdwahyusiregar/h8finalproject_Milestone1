@@ -1,0 +1,188 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code
+  version: "1.0.0"
+  title: Swagger Rest Article
+consumes:
+  - application/json
+produces:
+  - application/json
+
+basePath: /api/
+
+# Paths supported by the server application
+paths:
+  /milestones:
+    get:
+      operationId: milestones.read_all
+      tags:
+        - milestones
+      summary: Read the entire set of milestones, sorted by last name
+      description: Read the entire set of milestones, sorted by last name
+      responses:
+        200:
+          description: Successfully read milestones set operation
+          schema:
+            type: array
+            items:
+              properties:
+                development_id:
+                  type: string
+                  description: Id of the development
+                name:
+                  type: string
+                  description: First name of the development
+                city:
+                  type: string
+                  description: Last name of the development
+                description:
+                  type: string
+                  description: description of the development
+                timestamp:
+                  type: string
+                  description: Creation/Update timestamp of the development
+
+    post:
+      operationId: milestones.create
+      tags:
+        - milestones
+      summary: Create a development
+      description: Create a new development
+      parameters:
+        - name: development
+          in: body
+          description: development to create
+          required: True
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+                description: First name of development to create
+              city:
+                type: string
+                description: Last name of development to create
+              description:
+                type: string
+                description: description of development to create
+      responses:
+        201:
+          description: Successfully created development
+          schema:
+            properties:
+              development_id:
+                type: string
+                description: Id of the development
+              name:
+                type: string
+                description: First name of the development
+              city:
+                type: string
+                description: Last name of the development
+              description:
+                type: string
+                description: description of the development
+              timestamp:
+                type: string
+                description: Creation/Update timestamp of the development record
+
+  /milestones/{development_id}:
+    get:
+      operationId: milestones.read_one
+      tags:
+        - milestones
+      summary: Read one development
+      description: Read one development
+      parameters:
+        - name: development_id
+          in: path
+          description: Id of the development to get
+          type: integer
+          required: True
+      responses:
+        200:
+          description: Successfully read development from milestones data operation
+          schema:
+            type: object
+            properties:
+              development_id:
+                type: string
+                description: Id of the development
+              name:
+                type: string
+                description: First name of the development
+              city:
+                type: string
+                description: Last name of the development
+              description:
+                type: string
+                description: description of the development
+              timestamp:
+                type: string
+                description: Creation/Update timestamp of the development record
+
+    put:
+      operationId: milestones.update
+      tags:
+        - milestones
+      summary: Update a development
+      description: Update a development
+      parameters:
+        - name: development_id
+          in: path
+          description: Id the development to update
+          type: integer
+          required: True
+        - name: development
+          in: body
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+                description: First name of the development
+              city:
+                type: string
+                description: Last name of the development
+              description:
+                type: string
+                description: description of the development
+      responses:
+        200:
+          description: Successfully updated development
+          schema:
+            properties:
+              development_id:
+                type: string
+                description: Id of the development in the database
+              name:
+                type: string
+                description: First name of the development
+              city:
+                type: string
+                description: Last name of the development
+              description:
+                type: string
+                description: description of the development
+              timestamp:
+                type: string
+                description: Creation/Update timestamp of the development record
+
+    delete:
+      operationId: milestones.delete
+      tags:
+        - milestones
+      summary: Delete a development from the milestones list
+      description: Delete a development
+      parameters:
+        - name: development_id
+          in: path
+          type: integer
+          description: Id of the development to delete
+          required: true
+      responses:
+        200:
+          description: Successfully deleted a development
+
+
+  

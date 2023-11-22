@@ -1,0 +1,52 @@
+yocbc/
+# File Bytecode
+__pycache__/
+*.pyc
+
+# Virtual Environments
+venv/
+env/
+myenv/
+
+# Editor-specific files
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Environment configuration
+.env
+
+# Compiled Python files
+*.pyc
+*.pyo
+__pycache__/
+
+# Compiled C extensions
+*.so
+
+# Build and distribution
+build/
+dist/
+*.egg-info/
+
+# Local development settings
+*.sqlite3
+*.db
+*.db-shm
+*.db-wal
+*.pyc
+*.pyo
+
+# macOS
+.DS_Store
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Python profiling
+profile_*
+
+# PyInstaller
+__pyinstaller/
